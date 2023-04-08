@@ -24,9 +24,13 @@ app.get("/", (req, res) => {
 //database call
 DbConnection();
 
+let origin = "http://localhost:3000";
+if (process.env.NODE === "produaction") {
+  origin = process.env.CLIENT_ORIGIN;
+}
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin,
     credentials: true,
   })
 );
