@@ -24,9 +24,9 @@ app.get("/", (req, res) => {
 //database call
 DbConnection();
 
-let origin = "http://localhost:3000";
+// let origin = "http://localhost:3000";
 if (process.env.NODE === "production") {
-  origin = process.env.CLIENT_ORIGIN;
+  origin = "https://cipher-school-client.onrender.com";
 }
 app.use(
   cors({
