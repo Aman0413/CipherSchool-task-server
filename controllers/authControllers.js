@@ -61,10 +61,18 @@ const login = async (req, res) => {
       }
     );
 
+    // res.cookie("jwt", accessToken, {
+    //   witthCrdentials: true,
+    //   httpOnly: false,
+    //   maxAge: maxAge * 10,
+    // });
+
     res.cookie("jwt", accessToken, {
-      witthCrdentials: true,
-      httpOnly: false,
-      maxAge: maxAge * 10,
+      secure: true,
+      sameSite: "Lax",
+      httpOnly: true,
+      maxAge: 10 * 24 * 60 * 60 * 1000,
+      // 10 days
     });
     return res.send(success(200, { accessToken }));
   } catch (err) {

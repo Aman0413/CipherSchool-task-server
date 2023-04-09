@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 DbConnection();
 
 let origin = "http://localhost:3000";
-if (process.env.NODE === "produaction") {
+if (process.env.NODE === "production") {
   origin = process.env.CLIENT_ORIGIN;
 }
 app.use(
