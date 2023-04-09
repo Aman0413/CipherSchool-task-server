@@ -63,7 +63,7 @@ const login = async (req, res) => {
 
     res.cookie("jwt", accessToken, {
       witthCrdentials: true,
-      httpOnly: true,
+      httpOnly: false,
       maxAge: maxAge * 10,
     });
     return res.send(success(200, { accessToken }));
