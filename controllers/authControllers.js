@@ -62,10 +62,10 @@ const login = async (req, res) => {
     );
 
     res.cookie("jwt", accessToken, {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
+      httpOnly: false,
       maxAge: 10 * 24 * 60 * 60 * 1000,
+      // sameSite: "none",
+      // secure: false,
       //10 days
     });
 
