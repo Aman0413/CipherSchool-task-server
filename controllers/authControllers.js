@@ -61,20 +61,21 @@ const login = async (req, res) => {
       }
     );
 
+    res.cookie("jwt", accessToken, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      maxAge: 10 * 24 * 60 * 60 * 1000,
+      //10 days
+    });
+
     // res.cookie("jwt", accessToken, {
-    //   witthCrdentials: true,
+    //   secure: true,
+    //   sameSite: "Lax",
     //   httpOnly: true,
     //   maxAge: 10 * 24 * 60 * 60 * 1000,
-    //   //10 days
+    //   // 10 days
     // });
-
-    res.cookie("jwt", accessToken, {
-      secure: true,
-      sameSite: "Lax",
-      httpOnly: true,
-      maxAge: 10 * 24 * 60 * 60 * 1000,
-      // 10 days
-    });
     return res.send(success(200, { accessToken }));
   } catch (err) {
     return res.send(error(500, err.message));
